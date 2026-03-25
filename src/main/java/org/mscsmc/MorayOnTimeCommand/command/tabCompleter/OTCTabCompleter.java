@@ -1,11 +1,11 @@
-package org.VoyagerStar.onTimeCommand.command.tabCompleter;
+package org.mscsmc.MorayOnTimeCommand.command.tabCompleter;
 
-import org.VoyagerStar.onTimeCommand.OnTimeCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.mscsmc.MorayOnTimeCommand.OnTimeCommand;
 
 import java.util.ArrayList;
 import java.util.Arrays;

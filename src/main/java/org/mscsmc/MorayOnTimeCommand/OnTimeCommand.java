@@ -1,20 +1,20 @@
-package org.VoyagerStar.onTimeCommand;
+package org.mscsmc.MorayOnTimeCommand;
 
-import org.VoyagerStar.onTimeCommand.command.executor.*;
-import org.VoyagerStar.onTimeCommand.command.tabCompleter.EnableOrbitalTNTTabCompleter;
-import org.VoyagerStar.onTimeCommand.command.tabCompleter.OTCTabCompleter;
-import org.VoyagerStar.onTimeCommand.init.Initialize;
-import org.VoyagerStar.onTimeCommand.init.VersionChecker;
-import org.VoyagerStar.onTimeCommand.listener.FishingRodListener;
-import org.VoyagerStar.onTimeCommand.listener.PlayerJoinListener;
-import org.VoyagerStar.onTimeCommand.utils.FoliaScheduler;
-import org.VoyagerStar.onTimeCommand.utils.LanguageManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import org.mscsmc.MorayOnTimeCommand.command.executor.*;
+import org.mscsmc.MorayOnTimeCommand.command.tabCompleter.EnableOrbitalTNTTabCompleter;
+import org.mscsmc.MorayOnTimeCommand.command.tabCompleter.OTCTabCompleter;
+import org.mscsmc.MorayOnTimeCommand.init.Initialize;
+import org.mscsmc.MorayOnTimeCommand.init.VersionChecker;
+import org.mscsmc.MorayOnTimeCommand.listener.FishingRodListener;
+import org.mscsmc.MorayOnTimeCommand.listener.PlayerJoinListener;
+import org.mscsmc.MorayOnTimeCommand.utils.FoliaScheduler;
+import org.mscsmc.MorayOnTimeCommand.utils.LanguageManager;
 
 import java.io.File;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package org.VoyagerStar.onTimeCommand.utils;
+package org.mscsmc.MorayOnTimeCommand.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

@@ -1,10 +1,10 @@
-package org.VoyagerStar.onTimeCommand.command.executor;
+package org.mscsmc.MorayOnTimeCommand.command.executor;
 
-import org.VoyagerStar.onTimeCommand.OnTimeCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
+import org.mscsmc.MorayOnTimeCommand.OnTimeCommand;
 
 public class EnableOrbitalTNTCommandExecutor implements CommandExecutor {
     private final OnTimeCommand plugin;

@@ -1,10 +1,10 @@
-package org.VoyagerStar.onTimeCommand;
+package org.mscsmc.MorayOnTimeCommand;
 
-import org.VoyagerStar.onTimeCommand.utils.FoliaScheduler;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.mscsmc.MorayOnTimeCommand.utils.FoliaScheduler;
 
 import java.io.File;
 import java.io.InputStream;

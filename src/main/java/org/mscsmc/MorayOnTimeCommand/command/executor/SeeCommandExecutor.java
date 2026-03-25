@@ -1,17 +1,17 @@
-package org.VoyagerStar.onTimeCommand.command.executor;
+package org.mscsmc.MorayOnTimeCommand.command.executor;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.event.HoverEvent;
-import org.VoyagerStar.onTimeCommand.OnTimeCommand;
-import org.VoyagerStar.onTimeCommand.RunCommandOnTime;
-import org.VoyagerStar.onTimeCommand.utils.LanguageManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import org.mscsmc.MorayOnTimeCommand.OnTimeCommand;
+import org.mscsmc.MorayOnTimeCommand.RunCommandOnTime;
+import org.mscsmc.MorayOnTimeCommand.utils.LanguageManager;
 
 import java.util.List;
 
