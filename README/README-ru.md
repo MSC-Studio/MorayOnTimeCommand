@@ -1,0 +1,206 @@
+# OnTimeCommand
+
+[![License](https://img.shields.io/github/license/VoyagerStar3897081534/OnTimeCommand)](../LICENSE)
+[![Release](https://img.shields.io/github/v/release/VoyagerStar3897081534/OnTimeCommand)](https://github.com/VoyagerStar3897081534/OnTimeCommand/releases)
+[![Issues](https://img.shields.io/github/issues/VoyagerStar3897081534/OnTimeCommand)](https://github.com/VoyagerStar3897081534/OnTimeCommand/issues)
+
+Мощный плагин для серверов Minecraft Paper, который позволяет автоматически выполнять команды через заданные промежутки
+времени.
+
+[:cn: 中文](../README.md) | [:gb: English](README-en.md) | [:fr: Français](README-fr.md) | [:es: Español](README-es.md) | [:sa: العربية](README-ar.md)
+
+## 🌟 Возможности
+
+- ⏰ **Планирование выполнения команд** - Автоматическое выполнение команд Minecraft через заданные промежутки времени
+- 🔧 **Гибкое управление командами** - Поддержка добавления, удаления, включения и отключения запланированных задач
+
+- 🔍 **Интерактивный интерфейс** - Кликабельный список задач для просмотра и управления
+- 🛡️ **Система разрешений** - Тонкий контроль разрешений
+- 🔄 **Горячая перезагрузка** - Поддержка горячей перезагрузки конфигурационных файлов без перезапуска сервера
+- 📊 **Мониторинг в реальном времени** - Просмотр состояния и деталей всех запланированных задач
+- 📝 **Многоязычная поддержка** - Переключение языка в любое время
+
+## 📋 Системные требования
+
+- **Версия Minecraft**: 1.21+
+- **Сервер**: Paper 1.21+
+- **Версия Java**: Java 21+
+
+## 🚀 Установка
+
+1. Скачайте последний файл `.jar`
+2. Поместите файл плагина в папку `plugins` сервера
+3. Перезапустите сервер
+4. Плагин автоматически сгенерирует конфигурационные файлы
+
+## 📖 Руководство по использованию
+
+### Основные команды
+
+#### Основные команды управления
+
+```bash
+/ontimecommand <подкоманда> [параметры...] - Управление запланированными командами (алиас: /otc)
+/seecommand - Просмотр всех списков запланированных команд
+/reloadotc - Перезагрузка всех конфигурационных файлов
+/otcsetlang <подкоманда> - Переключение языка, используемого плагином сервера
+```
+
+#### Детали подкоманд
+
+**Добавить новую задачу**
+
+```bash
+/ontimecommand add <имя-задачи> <интервал-в-секундах>
+# Пример: Добавить задачу, выполняющуюся каждые 60 секунд
+/ontimecommand add welcome-message 60
+```
+
+**Добавить команды к задаче**
+
+```bash
+/ontimecommand addcommand <имя-задачи> <команда1> [команда2] [команда3]...
+# Пример: Добавить несколько команд к задаче
+/ontimecommand addcommand welcome-message "say Добро пожаловать!" "title @a title Добро пожаловать"
+```
+
+**Включить/Отключить задачи**
+
+```bash
+/ontimecommand enable <имя-задачи>
+/ontimecommand disable <имя-задачи>
+```
+
+**Удалить команды или задачи**
+
+```bash
+/ontimecommand deletecommand <имя-задачи> <номер-команды>
+/ontimecommand delete <имя-задачи>
+```
+
+**Просмотр деталей задачи**
+
+```bash
+/ontimecommand seeinfo <имя-задачи>
+```
+
+**Просмотр всех команд**
+
+```bash
+/seecommand
+# Открывает интерактивный графический интерфейс, показывающий все запланированные команды со статусом
+```
+
+**Перезагрузка конфигурации**
+
+```bash
+/reloadotc
+# Перезагружает все конфигурационные файлы без перезапуска сервера
+```
+
+### Узлы разрешений
+
+| Узел разрешения        | Описание                               | По умолчанию |
+|------------------------|----------------------------------------|--------------|
+| `ontimecommand.admin`  | Использовать все функции OnTimeCommand | OP           |
+| `ontimecommand.player` | Только просмотр списка команд          | Все игроки   |
+
+### Конфигурационные файлы
+
+#### Конфигурация запланированных команд (`on-time-command-list.yml`)
+
+```yaml
+commands:
+  welcome-message:
+    interval: 30
+    commands:
+      - "say Добро пожаловать на сервер!"
+      - "title @a title Добро пожаловать!"
+    disabled: false
+
+  clean-drops:
+    interval: 300
+    commands:
+      - "kill @e[type=item]"
+      - "say Предметы очищены"
+    disabled: true
+```
+
+## 🔧 Информация для разработчиков
+
+### Сборка проекта
+
+```bash
+# Клонирование репозитория
+git clone https://github.com/VoyagerStar3897081534/OnTimeCommand.git
+cd OnTimeCommand
+
+# Сборка проекта
+mvn clean package
+```
+
+### Конфигурация Maven
+
+Проект использует Maven для управления сборкой, поддерживающий несколько конфигураций сборки:
+
+```bash
+# Публикация стабильной версии
+mvn clean package -DversionPackageType=release
+
+# Публикация бета-версии
+mvn clean package -DversionPackageType=beta
+
+# Версия разработки (по умолчанию)
+mvn clean package
+```
+
+### Структура проекта
+
+```
+src/
+├── main/
+│   ├── java/org/VoyagerStar/onTimeCommand/
+│   │   ├── command/
+│   │   │   ├── executor/          # Исполнители команд
+│   │   │   └── tabCompleter/      # Завершение команд
+│   │   ├── init/                  # Модуль инициализации
+│   │   ├── listener/              # Слушатели событий
+│   │   ├── OnTimeCommand.java     # Главный класс
+│   │   └── RunCommandOnTime.java  # Управление запланированными задачами
+│   └── resources/
+│       ├── on-time-command-list.yml
+│       ├── orbital-tnt-config.yml
+│       └── paper-plugin.yml
+└── test/
+    └── java/                      # Модульные тесты
+```
+
+## 🤝 Руководство по вкладам
+
+Добро пожаловать в отправку Issues и Pull Requests!
+
+1. Сделайте форк этого репозитория
+2. Создайте ветку функциональности (`git checkout -b feature/AmazingFeature`)
+3. Зафиксируйте изменения (`git commit -m 'Add some AmazingFeature'`)
+4. Отправьте в ветку (`git push origin feature/AmazingFeature`)
+5. Откройте Pull Request
+
+## 📝 Лицензия
+
+Этот проект лицензирован по лицензии MIT - см. файл [LICENSE](../LICENSE) для подробностей
+
+## 🆘 Поддержка и помощь
+
+- 💬 **Обратная связь по проблемам**: [GitHub Issues](https://github.com/VoyagerStar3897081534/OnTimeCommand/issues)
+- 📚 **Документация**: [Wiki](https://github.com/VoyagerStar3897081534/OnTimeCommand/wiki)
+- 📧 **Связаться с автором**: VoyagerStar
+
+## 🙏 Благодарности
+
+Спасибо всем разработчикам и пользователям, которые внесли свой вклад в этот проект!
+
+---
+
+<p align="center">
+  Сделано с от VoyagerStar
+</p>

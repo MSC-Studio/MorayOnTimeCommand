@@ -1,0 +1,205 @@
+# OnTimeCommand
+
+[![License](https://img.shields.io/github/license/VoyagerStar3897081534/OnTimeCommand)](../LICENSE)
+[![Release](https://img.shields.io/github/v/release/VoyagerStar3897081534/OnTimeCommand)](https://github.com/VoyagerStar3897081534/OnTimeCommand/releases)
+[![Issues](https://img.shields.io/github/issues/VoyagerStar3897081534/OnTimeCommand)](https://github.com/VoyagerStar3897081534/OnTimeCommand/issues)
+
+برنامج مكون قوي لخوادم ماين كرافت بايبر يتيح لك تنفيذ الأوامر تلقائيًا في فترات زمنية محددة.
+
+[:cn: 中文](../README.md) | [:gb: English](README-en.md) | [:fr: Français](README-fr.md) | [:es: Español](README-es.md) | [:ru: Русский](README-ru.md)
+
+## 🌟 الميزات
+
+- ⏰ **تنفيذ الأوامر المجدولة** - تنفيذ تلقائي لأوامر ماين كرافت في فترات زمنية محددة
+- 🔧 **إدارة مرنة للأوامر** - دعم إضافة وحذف وتمكين وتعطيل المهام المجدولة
+
+- 🔍 **واجهة تفاعلية** - قائمة مهام قابلة للنقر للاستعلام والإدارة
+- 🛡️ **نظام الأذونات** - تحكم دقيق في الأذونات
+- 🔄 **إعادة التحميل الفوري** - دعم إعادة تحميل ملفات التكوين دون إعادة تشغيل الخادم
+- 📊 **المراقبة في الوقت الفعلي** - عرض حالة وتفاصيل جميع المهام المجدولة
+- 📝 **دعم متعدد اللغات** - تبديل اللغة المستخدمة في أي وقت
+
+## 📋 متطلبات النظام
+
+- **إصدار ماين كرافت**: 1.21+
+- **الخادم**: Paper 1.21+
+- **إصدار جافا**: Java 21+
+
+## 🚀 التثبيت
+
+1. قم بتنزيل أحدث ملف `.jar`
+2. ضع ملف البرنامج المساعد في مجلد `plugins` الخاص بالخادم
+3. أعد تشغيل الخادم
+4. سيقوم البرنامج بإنشاء ملفات التكوين تلقائيًا
+
+## 📖 دليل الاستخدام
+
+### الأوامر الأساسية
+
+#### الأوامر الرئيسية للإدارة
+
+```bash
+/ontimecommand <الأمر الفرعي> [المعايير...] - إدارة الأوامر المجدولة (الاسم المستعار: /otc)
+/seecommand - عرض جميع قوائم الأوامر المجدولة
+/reloadotc - إعادة تحميل جميع ملفات التكوين
+/otcsetlang <الأمر الفرعي> - تبديل اللغة المستخدمة بواسطة البرنامج المساعد للخادم
+```
+
+#### تفاصيل الأوامر الفرعية
+
+**إضافة مهمة جديدة**
+
+```bash
+/ontimecommand add <اسم-المهمة> <ثواني-الفترة>
+# مثال: إضافة مهمة تنفذ كل 60 ثانية
+/ontimecommand add welcome-message 60
+```
+
+**إضافة أوامر إلى المهمة**
+
+```bash
+/ontimecommand addcommand <اسم-المهمة> <الأمر1> [الأمر2] [الأمر3]...
+# مثال: إضافة أوامر متعددة إلى مهمة
+/ontimecommand addcommand welcome-message "say مرحباً!" "title @a title مرحباً"
+```
+
+**تمكين/تعطيل المهام**
+
+```bash
+/ontimecommand enable <اسم-المهمة>
+/ontimecommand disable <اسم-المهمة>
+```
+
+**حذف الأوامر أو المهام**
+
+```bash
+/ontimecommand deletecommand <اسم-المهمة> <رقم-الأمر>
+/ontimecommand delete <اسم-المهمة>
+```
+
+**عرض تفاصيل المهمة**
+
+```bash
+/ontimecommand seeinfo <اسم-المهمة>
+```
+
+**عرض جميع الأوامر**
+
+```bash
+/seecommand
+# يفتح واجهة رسومية تفاعلية تعرض جميع الأوامر المجدولة مع حالتها
+```
+
+**إعادة تحميل التكوين**
+
+```bash
+/reloadotc
+# يعيد تحميل جميع ملفات التكوين دون إعادة تشغيل الخادم
+```
+
+### عقد الأذونات
+
+| عقدة الأذونات          | الوصف                            | الافتراضي     |
+|------------------------|----------------------------------|---------------|
+| `ontimecommand.admin`  | استخدام جميع ميزات OnTimeCommand | OP            |
+| `ontimecommand.player` | عرض قائمة الأوامر فقط            | جميع اللاعبين |
+
+### ملفات التكوين
+
+#### تكوين الأوامر المجدولة (`on-time-command-list.yml`)
+
+```yaml
+commands:
+  welcome-message:
+    interval: 30
+    commands:
+      - "say مرحباً بك في الخادم!"
+      - "title @a title مرحباً!"
+    disabled: false
+
+  clean-drops:
+    interval: 300
+    commands:
+      - "kill @e[type=item]"
+      - "say تم تنظيف العناصر"
+    disabled: true
+```
+
+## 🔧 معلومات المطور
+
+### بناء المشروع
+
+```bash
+# استنساخ المستودع
+git clone https://github.com/VoyagerStar3897081534/OnTimeCommand.git
+cd OnTimeCommand
+
+# بناء المشروع
+mvn clean package
+```
+
+### تكوين Maven
+
+يستخدم المشروع Maven لإدارة البناء، مع دعم تكوينات بناء متعددة:
+
+```bash
+# نشر إصدار مستقر
+mvn clean package -DversionPackageType=release
+
+# نشر إصدار تجريبي
+mvn clean package -DversionPackageType=beta
+
+# إصدار التطوير (الافتراضي)
+mvn clean package
+```
+
+### هيكل المشروع
+
+```
+src/
+├── main/
+│   ├── java/org/VoyagerStar/onTimeCommand/
+│   │   ├── command/
+│   │   │   ├── executor/          # منفذو الأوامر
+│   │   │   └── tabCompleter/      # إكمال الأوامر
+│   │   ├── init/                  # وحدة التهيئة
+│   │   ├── listener/              # مستمعو الأحداث
+│   │   ├── OnTimeCommand.java     # الفئة الرئيسية
+│   │   └── RunCommandOnTime.java  # إدارة المهام المجدولة
+│   └── resources/
+│       ├── on-time-command-list.yml
+│       ├── orbital-tnt-config.yml
+│       └── paper-plugin.yml
+└── test/
+    └── java/                      # الاختبارات الوحدوية
+```
+
+## 🤝 إرشادات المساهمة
+
+مرحبًا بك في تقديم المشكلات وطلبات السحب!
+
+1. اصنع نسخة من هذا المستودع
+2. أنشئ فرع ميزة (`git checkout -b feature/AmazingFeature`)
+3. التزم بالتغييرات (`git commit -m 'Add some AmazingFeature'`)
+4. ادفع إلى الفرع (`git push origin feature/AmazingFeature`)
+5. افتح طلب سحب
+
+## 📝 الترخيص
+
+هذا المشروع مرخص بموجب ترخيص MIT - انظر ملف [LICENSE](../LICENSE) للحصول على التفاصيل
+
+## 🆘 الدعم والمساعدة
+
+- 💬 **ردود الفعل حول المشكلات**: [GitHub Issues](https://github.com/VoyagerStar3897081534/OnTimeCommand/issues)
+- 📚 **التوثيق**: [Wiki](https://github.com/VoyagerStar3897081534/OnTimeCommand/wiki)
+- 📧 **الاتصال بالمؤلف**: VoyagerStar
+
+## 🙏 الشكر والتقدير
+
+شكرًا لجميع المطورين والمستخدمين الذين ساهموا في هذا المشروع!
+
+---
+
+<p align="center">
+  مصنوع بـ بواسطة VoyagerStar
+</p>
